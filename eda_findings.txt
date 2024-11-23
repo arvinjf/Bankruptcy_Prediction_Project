@@ -1,0 +1,31 @@
+Dataset structure:
+- Record: 6819
+- Colonne: 23 (tutte variabili numeriche)
+- Y: Bancarotta (int64)
+- X: tutte le colonne restanti (float64)
+- NA: 0
+
+Validation - Binary Target Check (Y):
+La colonna 'Bancarotta' è binaria: ha solo 0 e 1 come valori.
+
+Class Imbalance Analysis:
+C'è uno squilibrio nella distribuzione tra le classi del target:
+- 0: 6599
+- 1: 220
+
+Vuol dire che solo 220 vanno in bancarotta, le restanti no.
+
+Visualization - Numerical Distributions - Boxplot:
+- La maggior parte delle colonne presente una distribuzione concentrata 
+- Le colonne Aliquota degli interessi sul debito, Debito a lungo termine su attività correnti, Indice di Rotazione dell'Attivo Corrente e Grado di leva finanziaria presentano il maggior numero di outliers e una distribuzione molto variegata
+
+Correlation Matrix:
+- Le variabili presentano incorrelazione tra loro poiché il dataset originale è stato filtrato tramite l'utilizzo del VIF per ridurre/eliminare la multicollinearità e aumentare l'accuratezza delle stime
+
+
+
+
+
+
+
+
