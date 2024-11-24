@@ -22,6 +22,10 @@ Visualization - Numerical Distributions - Boxplot:
 Correlation Matrix:
 - Le variabili presentano incorrelazione tra loro poiché il dataset originale è stato filtrato tramite l'utilizzo del VIF per ridurre/eliminare la multicollinearità e aumentare l'accuratezza delle stime
 
+Identify Duplicates:
+- Non ci sono duplicati all'interno del dataset
+
+
 
 
 
