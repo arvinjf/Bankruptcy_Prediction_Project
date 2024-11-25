@@ -16,7 +16,7 @@ C'è uno squilibrio nella distribuzione tra le classi del target:
 Vuol dire che solo 220 vanno in bancarotta, le restanti no.
 
 Visualization - Numerical Distributions - Boxplot:
-- La maggior parte delle colonne presente una distribuzione concentrata 
+- La maggior parte delle colonne presenta una distribuzione concentrata 
 - Le colonne Aliquota degli interessi sul debito, Debito a lungo termine su attività correnti, Indice di Rotazione dell'Attivo Corrente e Grado di leva finanziaria presentano il maggior numero di outliers e una distribuzione molto variegata
 
 Correlation Matrix:
