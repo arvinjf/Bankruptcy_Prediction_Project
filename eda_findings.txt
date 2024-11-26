@@ -15,15 +15,36 @@ C'è uno squilibrio nella distribuzione tra le classi del target:
 
 Vuol dire che solo 220 vanno in bancarotta, le restanti no.
 
-Visualization - Numerical Distributions - Boxplot:
-- La maggior parte delle colonne presenta una distribuzione concentrata 
-- Le colonne Aliquota degli interessi sul debito, Debito a lungo termine su attività correnti, Indice di Rotazione dell'Attivo Corrente e Grado di leva finanziaria presentano il maggior numero di outliers e una distribuzione molto variegata
-
 Correlation Matrix:
 - Le variabili presentano incorrelazione tra loro poiché il dataset originale è stato filtrato tramite l'utilizzo del VIF per ridurre/eliminare la multicollinearità e aumentare l'accuratezza delle stime
 
+EDA - Feature Engineering:
+Le features che presentano una scala di misura diversa dalle altre sono:
+- Tasso di Spesa Operativa
+- Aliquota delle spese di ricerca e sviluppo
+- Aliquota degli interessi sul debito
+- Tasso crescita valore netto
+- Debito totale/ Patrimonio netto totale
+- Debito a lungo termine su attività correnti
+- Indice di Rotazione dell'Attivo Corrente
+
 Identify Duplicates:
 - Non ci sono duplicati all'interno del dataset
+
+Outliers:
+Le features in cui sono stati rilevati outliers significativi sono:
+- Crediti in sospeso/Patrimonio netto
+- Debito totale/Patrimonio netto totale
+- Flusso di cassa per azione
+- Grado di leva finanziaria
+- Margine Lordo Operativo
+- Percentuale di reinvestimento del contante
+- Riserve utili su attivo totale
+- Tasso di crescita valore netto 
+- Tasso di crescita dell'utile operativo
+- Tasso di flusso di cassa
+- Tasso di interesse netto dopo le tasse
+- Valore Netto per Azione (A)
 
 
 
