@@ -34,19 +34,19 @@ Identify Duplicates:
 Outliers:
 Dalla visualizzazione grafica che mostra il numero di outliers per Features divisi per classe di Target, si evince che il numero di outliers per Target = 1 è minore rispetto a quello per Target = 0. Questo accade perché il numero di osservazioni per YìTarget = 1 sono solamente 220.
 
-Le features in cui sono stati rilevati outliers significativi sono:
-- Crediti in sospeso/Patrimonio netto
-- Debito totale/Patrimonio netto totale
-- Flusso di cassa per azione
-- Grado di leva finanziaria
-- Margine Lordo Operativo
-- Percentuale di reinvestimento del contante
-- Riserve utili su attivo totale
-- Tasso di crescita valore netto 
-- Tasso di crescita dell'utile operativo
-- Tasso di flusso di cassa
-- Tasso di interesse netto dopo le tasse
-- Valore Netto per Azione (A)
+Le features in cui sono stati rilevati outliers significativi, analizzando i boxplot sulla loro distribuzione numerica, sono:
+- Crediti in sospeso/Patrimonio netto: 1
+- Debito totale/Patrimonio netto totale: 4
+- Flusso di cassa per azione: 2
+- Grado di leva finanziaria: 5
+- Margine Lordo Operativo: 3
+- Percentuale di reinvestimento del contante: 4
+- Riserve utili su attivo totale: 3
+- Tasso di crescita valore netto: 1
+- Tasso di crescita dell'utile operativo: 1
+- Tasso di flusso di cassa: 4
+- Tasso di interesse netto dopo le tasse: 2
+- Valore Netto per Azione (A): 1
 
 
 
