@@ -32,6 +32,8 @@ Identify Duplicates:
 - Non ci sono duplicati all'interno del dataset
 
 Outliers:
+Dalla visualizzazione grafica che mostra il numero di outliers per Features divisi per classe di Target, si evince che il numero di outliers per Target = 1 è minore rispetto a quello per Target = 0. Questo accade perché il numero di osservazioni per YìTarget = 1 sono solamente 220.
+
 Le features in cui sono stati rilevati outliers significativi sono:
 - Crediti in sospeso/Patrimonio netto
 - Debito totale/Patrimonio netto totale
