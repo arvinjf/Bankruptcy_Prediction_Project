@@ -52,6 +52,10 @@ Feature Selection:
 - SKB - K ottimale: 8 Accuracy: 0.7981
 - RFE - K ottimale: 6 Accuracy: 0.7692
 
+Model Evaluation:
+- SKB Accuracy: 0.7104575163398693
+- RFE Accuracy: 0.6875816993464052
+
 
 
 
