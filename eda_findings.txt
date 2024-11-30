@@ -28,6 +28,11 @@ Le features che presentano una scala di misura diversa dalle altre sono:
 - Debito a lungo termine su attività correnti
 - Indice di Rotazione dell'Attivo Corrente
 
+Di queste, tre hanno anche una distribuzione disomogonea:
+- Aliquota degli interessi sul debito
+- Debito a lungo termine su attività correnti
+- Indice di Rotazione dell'Attivo Corrente
+
 Identify Duplicates:
 - Non ci sono duplicati all'interno del dataset
 
