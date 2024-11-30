@@ -53,6 +53,14 @@ Le features in cui sono stati rilevati outliers significativi, analizzando i box
 - Tasso di interesse netto dopo le tasse: 2
 - Valore Netto per Azione (A): 1
 
+Feature Selection:
+Le feature selezionate sia da SKB che da RFE sono:
+- Tasso di flusso di cassa
+- Margine Lordo Operativo
+- Tasso di interesse netto dopo le tasse
+- Aliquota delle spese di ricerca e sviluppo
+ -Tasso di Spesa Operativa
+
 
 
 
