@@ -1,3 +1,6 @@
-data/
 .venv
-procedure.txt
+data/
+module/__pycache__/
+all_in_one.ipynb
+all_in_one2.ipynb
+
