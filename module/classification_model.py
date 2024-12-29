@@ -189,14 +189,14 @@ def model_auc_roc_gini(model_name, y_pred, y_test):
 
 # ==== CONFRONTRO DEI MODELLI ====
 # Creazione di un dataset che contiene i Test accuracy, Recall, F1-score, Specificità, AUC-ROC, Indice di Gini dei modeli, funzionale alla visualizzazione grafica
-def model_metrics_df(model, test_accuracy, recall, f1, specificity, auc, gini):
+def model_metrics_df(model, test_accuracy, recall, f1, precision, auc, gini):
     # Inizializzo un dataset vuoto che contiene il modello e le relative metriche
     model_comparison_df = pd.DataFrame(columns=[
             'Model', 
             'Test Accuracy',
             'Recall',
             'F1-score',
-            'Specificity',
+            'Precision',
             'AUC-ROC',
             'Indice di Gini'
             ])
@@ -207,7 +207,7 @@ def model_metrics_df(model, test_accuracy, recall, f1, specificity, auc, gini):
             test_accuracy[i],
             recall[i],
             f1[i],
-            specificity[i],
+            precision[i],
             auc[i],
             gini[i]
         ]
