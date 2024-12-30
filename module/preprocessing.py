@@ -9,8 +9,7 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 from imblearn.over_sampling import SMOTE
 
 # ==== SCREMATURA DELLE COLONNE =====
-def column_selection(df):
-    
+def rename_columns(df):
     # Rinomino le colonne in Italiano
     df.rename(columns={"Bankrupt?" : "Bancarotta",
                      " ROA(C) before interest and depreciation before interest" : "ROA(C) prima degli interessi e della svalutazione",
@@ -108,7 +107,10 @@ def column_selection(df):
                      " Interest Coverage Ratio (Interest expense to EBIT)" : "Rapp. di copertura degli interessi (interessi passivi/EBIT)", 
                      " Net Income Flag" : "Indicatore di Reddito Netto", 
                      " Equity to Liability" : "Capitale proprio/Passività"}, inplace = True)
+    
+    return df
      
+def first_column_selection(df):
     # Delle 96 colonne di cui è composto il dataset originale, rimuovo manualmente quelle che descrivono la stessa misura
     manual_selected_features = [
     'ROA(B) al lordo di interessi e ammortamenti dopo le imposte',
@@ -150,6 +152,9 @@ def column_selection(df):
 
     df = pd.DataFrame(df[manual_selected_features])
 
+    return df
+
+def second_column_selection(df):
     # Seleziono le colonne che presentano minore correlazione tra loro tramite il VIF (Variance Inflation Factor)
     def calculate_vif(df):
         """
