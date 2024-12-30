@@ -83,17 +83,17 @@ def robust_scaler(X_train_smote, X_test, cols_to_transform):
     
 # ==== STANDARD SCALER ====
 def standard_scaler(X_train_smote, X_test):
-    # Inizializzo un dataset per le Features di training identico a quello con SMOTE, che conterrà le Features scalate con StandardScaler
+    # Inizializzo un dataset per le Features di Train che conterrà le Features scalate con StandardScaler
     X_train_norm = X_train_smote.copy()
 
-    # Inizializzo un dataset per le Features di test identico a quello con SMOTE, che conterrà le Features scalate con StandardScaler
+    # Inizializzo un dataset per le Features di test che conterrà le Features scalate con StandardScaler
     X_test_norm = X_test.copy() 
 
-     # Inizializzo lo Scaler
-    scaler = RobustScaler()
+    # Inizializzo lo Scaler
+    scaler = StandardScaler()
 
-    # Procedo a scalare i valori
+    # Procedo a scalare i valori: fit sui dati di train e transform sui dati di test
     X_train_norm[X_train_norm.columns] = scaler.fit_transform(X_train_norm[X_train_norm.columns])
-    X_test_norm[X_test_norm.columns]= scaler.fit_transform(X_test_norm[X_test_norm.columns])
+    X_test_norm[X_test_norm.columns] = scaler.transform(X_test_norm[X_test_norm.columns])
 
     return X_train_norm, X_test_norm

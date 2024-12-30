@@ -78,6 +78,7 @@ def outliers_to_df (outliers_number):
     return outliers_0_table, outliers_1_table 
 
 # ==== RIMOZIONE DEGLI OUTLIERS ====
+# Tecnica della Deviazione Standard
 def remove_outliers (df, df_clean, features_with_outliers):
     k = 3 # Coefficiente di distanza 
     outliers_number = 0 # Inizializzo il numero di outliers
@@ -106,4 +107,6 @@ def remove_outliers (df, df_clean, features_with_outliers):
     print(f'Osservazioni rimosse: {df.shape[0] - df_clean.shape[0]}')
 
     return df_clean
+
+
 

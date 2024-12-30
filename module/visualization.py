@@ -51,7 +51,7 @@ def correlation_matrix_heatmap(correlation_matrix):
 # ==== DISTRIBUZIONE DELLE CLASSI PER FEATURES DIVISA PER CLASSI DEL TARGET ====
 def features_numerical_distribution_per_target_boxplot(df):
     # Boxplot
-    for i in range(df.shape[1]-1): # Itero solo su tutte le colonne tranne l'ultima, che rappresenta il Target
+    for i in range(len(df.drop(['Bancarotta'], axis = 1).columns)): # Itero solo su tutte le colonne tranne l'ultima, che rappresenta il Target
 
         plt.figure(figsize=(8, 4)) 
 
@@ -641,7 +641,7 @@ def model_plot_tree(best_dt_model, best_dt_score, dt_X_train, y_train_smote):
 
 # ==== CONFRONTO DEI MODELLI ====
 # Confronto dell'accuracy tra i modelli
-def model_comparison_barplot(model_comparison_df_long):
+def model_comparison_barplot(model_comparison_df_long, pca = False):
 
     plt.figure(figsize=(12, 8))
 
@@ -692,12 +692,53 @@ def model_comparison_barplot(model_comparison_df_long):
                 fontweight = 'bold'
             )
 
+    # Titolo del grafico
+    title = 'PCA - CONFRONTO DEI MODELLI PER METRICA' if pca else 'CONFRONTO DEI MODELLI PER METRICA'
+
     # Stile
-    plt.suptitle('CONFRONTO DEI MODELLI PER METRICA', y=1.05, fontsize=16)
+    plt.suptitle(title, y=1.05, fontsize=16)
     g.set_titles("{col_name}", fontweight='bold', bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5', linewidth=2))  
     g.set_axis_labels("", "")
     g.despine(left=True, bottom=True) 
     plt.tight_layout()
 
-    # plt.savefig("plot/barplot/model_comparison_barplot.png", bbox_inches='tight')
+    # plt.savefig("plot/barplot/{title.replace(" ", "_").lower()}_barplot.png", bbox_inches='tight')
+    plt.show()
+
+
+# ==== PRINCIPAL COMPONENT ANALYSIS ==== 
+def plot_pca_variance(pca):
+
+    # Calcolo della varianza spiegata cumulativa
+    cum_explained_variance = np.cumsum(pca.explained_variance_ratio_)
+
+    # Trovo l'indice della componente che raggiunge o supera il 75% della varianza cumulativa
+    index_selected = np.argmax(cum_explained_variance >= 0.75) + 1
+
+    # Creo il grafico
+    plt.figure(figsize=(10, 6))
+
+    # Traccio l'istogramma della varianza spiegata da ciascuna componente
+    plt.bar(range(1, len(pca.explained_variance_ratio_) + 1), 
+            pca.explained_variance_ratio_, alpha=0.5, label='Varianza spiegata individuale')
+
+    # Traccio la curva della varianza spiegata cumulativa
+    plt.step(range(1, len(cum_explained_variance) + 1), 
+             cum_explained_variance, where='mid', label='Varianza spiegata cumulativa')
+
+    # Evidenzio il punto dove la varianza cumulativa raggiunge il 75% con un punto rosso
+    plt.scatter(index_selected, cum_explained_variance[index_selected - 1], color='red', label='75% Varianza spiegata', zorder=5)
+
+    #Stile
+    plt.title('Varianza spiegata dalle componenti principali')
+    plt.xlabel('Indice della componente principale', labelpad = 15)
+    plt.ylabel('Quota di varianza spiegata', labelpad = 20)
+
+    # Aggiungo la legenda
+    plt.legend(loc='best')
+
+    # Ottimizzo il layout per evitare sovrapposizioni
+    plt.tight_layout()
+
+    plt.savefig("plot/pca/varianza_spiegata_dalle_componenti_principali.png", bbox_inches='tight')
     plt.show()

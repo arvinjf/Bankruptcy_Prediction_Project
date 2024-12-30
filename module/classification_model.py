@@ -11,6 +11,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import cross_val_score
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.decomposition import PCA
 
 # ==== REGRESSIONE LOGISTICA =====
 # Analisi dei coefficienti della Regressione Logistica
@@ -46,7 +47,7 @@ def log_reg_coefficients_df(result):
 def tune_knn_hyperparameters(model, model_X_train, y_train_smote):
     # Configuro la griglia di ricerca con Cross-validation
     param_grid = {
-        'n_neighbors': np.arange(1, 23),
+        'n_neighbors': np.arange(1, round(np.sqrt(len(model_X_train)))),
         'metric': ['manhattan']
         }
 
@@ -220,3 +221,37 @@ def model_metrics_df(model, test_accuracy, recall, f1, precision, auc, gini):
     )
 
     return model_comparison_df_long
+
+# ==== PRINCIPAL COMPONENT ANALYSIS =====
+# Esecuzione della PCA
+def pca_transformation(X_train_standard, X_test_standard):
+    pca = PCA(n_components=0.75) # Mantengo il 75% della varianza
+    pca_X_train = pca.fit_transform(X_train_standard)
+
+    # Trasformo il test set con lo stesso modello PCA
+    pca_X_test = pca.transform(X_test_standard)
+
+    # Verifico il numero di componenti principali
+    print(f"Numero di componenti principali selezionati: {pca.n_components_}")
+    print(f"Varianza spiegata da ciascuna componente: {pca.explained_variance_ratio_}")
+    print(f"Varianza totale spiegata: {sum(pca.explained_variance_ratio_):.2f}")
+
+    return pca, pca_X_train, pca_X_test
+
+# Nome delle componenti principali
+def print_pca_features(pca, X_train_standard):
+    # Estraggo i nomi delle Feature per ciascuna componente principale
+    feature_names = X_train_standard.columns  # Nomi delle Feature originali
+    components = pca.components_  # Componenti principali
+
+    # Per ogni componente principale, estraggo e stampo le Features
+    for i, component in enumerate(components):
+        print(f"\nComponente Principale {i+1}:")
+        # Associo i nomi delle Features al contributo della componente
+        feature_contributions = list(zip(feature_names, component))
+        # Ordino per valore assoluto decrescente per evidenziare le features più importanti
+        feature_contributions = sorted(feature_contributions, key=lambda x: abs(x[1]), reverse=True)
+        
+        # Stampo le Features con il rispettivo contributo
+        for feature, contribution in feature_contributions:
+            print(f"{feature}: {contribution:.4f}")
