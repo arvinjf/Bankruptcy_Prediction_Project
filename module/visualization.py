@@ -740,5 +740,5 @@ def plot_pca_variance(pca):
     # Ottimizzo il layout per evitare sovrapposizioni
     plt.tight_layout()
 
-    plt.savefig("plot/pca/varianza_spiegata_dalle_componenti_principali.png", bbox_inches='tight')
+    # plt.savefig("plot/barplot/varianza_spiegata_dalle_componenti_principali.png", bbox_inches='tight')
     plt.show()
