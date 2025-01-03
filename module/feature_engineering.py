@@ -27,8 +27,11 @@ def calculate_coeff_var(df_clean):
 
 # Selezione delle Features con coefficiente di variazione maggiore del 50%
 def calculate_high_coeff_var(df_clean):
-    # Inizializzo una lista vuota che conterrà i nomi delle Features con elevato coefficiente di variazione
-    high_cv_features = [] 
+    # Inizializzo una dizionario vuoto che conterrà i nomi delle Features con elevato coefficiente di variazione
+    high_cv_features = {
+    "Features": [],
+    "Coefficiente di Variazione (%)": []
+    }
 
      # Procedo a calcolare il coefficiente di variazione per ogni Features
     cv = calculate_coeff_var(df_clean)
@@ -40,10 +43,13 @@ def calculate_high_coeff_var(df_clean):
             high_cv_feature = df_clean.columns[i] 
             print(f'{high_cv_feature}: {round(cv[i], 2)}%')
 
-            # Salvo il nome della Features che ha un coefficiente di variazione > 50%
-            high_cv_features.append(high_cv_feature) 
+            # Salvo nel dizionario la Feature che ha un coefficiente di variazione > 50% 
+            high_cv_features["Features"].append(high_cv_feature)
+            high_cv_features["Coefficiente di Variazione (%)"].append(round(cv[i], 2))
 
-    return high_cv_features
+    high_cv_features_df = pd.DataFrame(high_cv_features) # Trasformo il dizionario in un dataframe
+
+    return   high_cv_features_df.sort_values(by = 'Coefficiente di Variazione (%)', ascending = False)
 
 # ==== SQRT TRANSFORMATION ====
 def sqrt_transformation(X_train_smote, X_test, cols_to_transform):

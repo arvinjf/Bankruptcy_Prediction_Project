@@ -170,6 +170,23 @@ def undersampling_impact_pie(index_class_1, same_size_index_class_0, index_class
     # plt.savefig(f"plot/piechart/{plot_title}.png", bbox_inches='tight')
     plt.show()
 
+# ==== COEFFICINTE DI VARIAZIONE ====
+def cv_barplot(cv_df):
+    plt.figure(figsize=(12, 8))
+
+    # Barplot
+    sns.barplot(x='Coefficiente di Variazione (%)', y='Features', data=cv_df, hue = 'Features', palette='coolwarm_r')
+
+    # Stile
+    plt.title("Features con CV > 50%", fontsize = 16, y = 1.02)
+    plt.xlabel("Coefficiente di Variazione (%)", fontsize = 12, labelpad = 15)
+    plt.ylabel("")
+    plt.grid(True, linestyle='--', alpha=0.7)
+        
+    plt.tight_layout()
+    plt.savefig("plot/barplot/logistic_regression_high_cv_features_barplot.png", bbox_inches='tight')
+    plt.show()
+
 # ==== ACCURACY DI SKB VS RFE====
 # Creazione del dataset che contiene le Featurs selezionate da SKB e RFE, con le relative accuracy
 def accuracy_to_df(accuracies):
