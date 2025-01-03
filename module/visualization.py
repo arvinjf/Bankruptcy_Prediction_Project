@@ -187,6 +187,43 @@ def cv_barplot(cv_df):
     plt.savefig("plot/barplot/logistic_regression_high_cv_features_barplot.png", bbox_inches='tight')
     plt.show()
 
+# ==== POST-NORMALIZZAZIONE =====
+def feature_numerical_distribution_post_normalization_boxplot(df_clean, model_X, feature_to_scale):
+    for column in feature_to_scale:
+        fig = plt.figure(figsize=(12,5))
+        
+        # Creo la griglia per la visualizzazione grafica
+        gs = mpl.gridspec.GridSpec(1, 2) # Griglia con 1 riga e 2 colonne
+        ax1 = plt.subplot(gs[0,0]) # Il boxplot pre-normalizzazione occupa la prima riga e la prima colonna
+        ax2 = plt.subplot(gs[0,1]) # Il boxplot post-normalizzazione occupa la prima riga e la seconda colonna
+
+        # Boxplot pre-normalizzazione
+        sns.boxplot(y=df_clean[column], color='darkred', ax = ax1)
+
+        # Boxplot post-normalizzazione
+        sns.boxplot(y=model_X[column], color='darkblue', ax = ax2)
+
+        # Stile generale
+        fig.suptitle(f'Boxplot - {column}', fontsize = 16, y = 1.025) # Titolo generale
+
+        # Stile subplot di sinistra
+        ax1.set_title('Pre-Normalizzazione')
+        ax1.set_xlabel('')
+        ax1.set_ylabel('')
+
+        # Stile subplot di destra
+        ax2.set_title('Post-Normalizzazione')
+        ax2.set_xlabel('')
+        ax2.set_ylabel('')
+
+        plt.tight_layout()
+
+        # Salvo il grafico
+        plot_title = f"{column.lower().replace('/', ' su ').replace(' ', '_')}_pre_vs_post_norm_boxplot"
+        plt.savefig(f"plot/boxplot/numerical_distributions/post_norm/{plot_title}.png")
+
+        plt.show()
+
 # ==== ACCURACY DI SKB VS RFE====
 # Creazione del dataset che contiene le Featurs selezionate da SKB e RFE, con le relative accuracy
 def accuracy_to_df(accuracies):
