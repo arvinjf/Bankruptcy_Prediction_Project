@@ -220,7 +220,7 @@ def feature_numerical_distribution_post_normalization_boxplot(df_clean, model_X,
 
         # Salvo il grafico
         plot_title = f"{column.lower().replace('/', ' su ').replace(' ', '_')}_pre_vs_post_norm_boxplot"
-        plt.savefig(f"plot/boxplot/numerical_distributions/post_norm/{plot_title}.png")
+        # plt.savefig(f"plot/boxplot/numerical_distributions/post_norm/{plot_title}.png", bbox_inches='tight')
 
         plt.show()
 
