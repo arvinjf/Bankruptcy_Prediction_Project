@@ -170,11 +170,13 @@ def model_accuracy(model, model_X_train, X_test, y_train_smote, y_test):
 
     y_pred = model.predict(X_test)
 
+    y_proba = model.predict_proba(X_test)[:, 1]
+
     test_accuracy = accuracy_score(y_test, y_pred)
 
     print("Test Accuracy:", test_accuracy)
 
-    return y_pred, test_accuracy
+    return y_pred, y_proba, test_accuracy
 
 # ==== AUC-ROC E INDICE DI GINI DEL MODELLO ====
 # Calcolo dell'AUC-ROC e dell'Indice di Gini del modello

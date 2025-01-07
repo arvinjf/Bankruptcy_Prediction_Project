@@ -638,9 +638,9 @@ def roc_curve_plot(model_name, y_test, skb_y_pred, rfe_y_pred, skb_auc, rfe_auc)
     plt.show()
 
 # Curva Roc di un solo modello
-def roc_curve_plot2(model_name, y_test, y_pred, auc):
+def roc_curve_plot2(model_name, y_test, y_roba, auc):
     # Calcoliamo la curva ROC del modello
-    fpr, tpr, thresholds = roc_curve(y_test, y_pred)
+    fpr, tpr, thresholds = roc_curve(y_test, y_roba)
 
     # Visualizzazione grafica
     plt.figure(figsize=(8,4))
