@@ -139,6 +139,45 @@ def df_clean_boxplot(df, df_clean):
 
         plt.show()
 
+# ==== DISTRIBUZIONE DELLE CLASSI DEL TARGET =====
+# Funzione per mostrare i valori reali
+def show_values(pct, all_values):
+
+    absolute = int(round(pct / 100. * sum(all_values)))
+
+    return f'{absolute}'  # Restituisco il valore come stringa
+
+# Visualizzazione grafica
+def target_class_distribution_pie(title, class_0, class_1):
+    labels = ['0', '1']
+    values = [class_0, class_1]
+
+    # Grafico a torta
+    fig = plt.figure(figsize=(12,5))
+
+    wedges, texts, autotexts = plt.pie(
+        values, 
+        autopct=lambda pct: show_values(pct, values), 
+        startangle=140, 
+        colors = ['darkred', 'darkblue']
+        )
+
+    # Stile
+    plot_title = f"{title} - Target Class Distribution"
+    plt.title(plot_title)
+
+    for autotext in autotexts:
+        autotext.set_color('white')
+        autotext.set_fontweight('bold')
+
+    plt.legend(wedges, labels, bbox_to_anchor=(1.25, 1))
+    plt.tight_layout()
+
+    # Salvataggio del grafico
+    # plt.savefig(f"plot/piechart/{plot_title.replace(" ", "_")}.png", bbox_inches='tight')
+
+    plt.show()
+
 # ==== IMPATTO DELL'UNDERSAMPLING ====
 def undersampling_impact_pie(index_class_1, same_size_index_class_0, index_class_0):
     # Inizializzo i dati per il grafico a torta
